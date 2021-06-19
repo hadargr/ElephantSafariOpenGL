@@ -1,0 +1,1 @@
+unsigned int generateTexture(const char *filename, GLenum targe); // loads a texture from filename
