@@ -35,6 +35,8 @@ void MainWindow::keyboardPressed(unsigned char key) {
     case GLUT_KEY_RIGHT:
       if (chosenAction == WALK) {
         elephant->turn(key == GLUT_KEY_LEFT);
+      } else if (chosenAction == MOVE_HEAD) {
+        elephant->moveHead(key);
       }
       break;
     case GLUT_KEY_UP:
@@ -46,7 +48,9 @@ void MainWindow::keyboardPressed(unsigned char key) {
       }
       break;
     case GLUT_KEY_DOWN:
-      elephant->moveHead(key);
+      if (chosenAction == MOVE_HEAD) {
+        elephant->moveHead(key);
+      }
       break;
     default:
       break;

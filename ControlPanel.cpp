@@ -3,8 +3,8 @@
 
 #define BUTTON_WIDTH 170
 #define BUTTON_HEIGHT 30
-#define TEXT_HEIGHT 20
-#define ROW_HEIGHT 30
+#define TEXT_HEIGHT 15
+#define ROW_HEIGHT 25
 #define AMBIENT_LIGHT_SECTION_X 10
 #define ELEPHANT_DATA_SECTION_X 350
 #define CONTROL_SECTION_X 650
@@ -25,7 +25,7 @@ void ControlPanel::drawText(string text, int scale, double posX, double posY, do
   glPushMatrix();
   glTranslatef(posX, posY, 1);
   glColor3f(red, green, blue);
-  glScalef(0.12,0.12,1);
+  glScalef(0.1,0.1,1);
   // switch(scale) {
   //   case(1) :
   //     glScalef(0.13,0.52,1);
@@ -59,7 +59,8 @@ void ControlPanel::drawElephantDataSection(GLfloat x) {
   drawText("Y axis Angle: " + to_string(elephant->angle).substr(0,4), 1, x, initialY - ROW_HEIGHT, 0,0,0);
   drawText("X: " + to_string(elephant->x).substr(0,5), 1, x, initialY - ROW_HEIGHT*2, 0,0,0);
   drawText("Z: " + to_string(elephant->z).substr(0,5), 1, x, initialY - ROW_HEIGHT*3, 0,0,0);
-  drawText("Head Angle: " + to_string(elephant->head_angle).substr(0,4), 1, x, initialY - ROW_HEIGHT*4, 0,0,0);
+  drawText("Head Angle Vertical: " + to_string(elephant->head_angle_vertical).substr(0,4), 1, x, initialY - ROW_HEIGHT*4, 0,0,0);
+  drawText("Head Angle Horizontal: " + to_string(elephant->head_angle_horizontal).substr(0,4), 1, x, initialY - ROW_HEIGHT*5, 0,0,0);
 }
 
 void ControlPanel::drawControlSection(GLfloat x) {
