@@ -1,6 +1,6 @@
 #define STB_IMAGE_IMPLEMENTATION
-#include "./stb_image/stb_image.h"
-#include <GL/glut.h>
+#include "utils.h"
+
 
 unsigned int generateTexture(const char *filename, GLenum target) {
   unsigned int texture;
@@ -9,7 +9,7 @@ unsigned int generateTexture(const char *filename, GLenum target) {
   // set the texture wrapping/filtering options (on the currently bound texture object)
   glTexParameteri(target, GL_TEXTURE_WRAP_S, GL_REPEAT);	
   glTexParameteri(target, GL_TEXTURE_WRAP_T, GL_REPEAT);
-  glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(target, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
   glTexParameteri(target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
   glTexEnvf(GL_TEXTURE_ENV
  , GL_TEXTURE_ENV_MODE

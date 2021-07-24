@@ -10,8 +10,14 @@ class Elephant {
         Elephant(GLfloat x, GLfloat z);
         void draw();
         void move(GLfloat xMove, GLfloat zMove);
+        void turn(bool positiveDir);
+        void walk();
+        void moveHead(unsigned char key);
         GLfloat x; // the elephant x position
         GLfloat z; // the elephant z position
+        GLfloat angle;
+        GLfloat head_angle;
+        GLfloat tail_angle;
     private:
         unsigned int texture; // the allocated texture id
         GLUquadric* texQuad;
@@ -23,4 +29,5 @@ class Elephant {
         void drawTrunk();
         void drawTusks();
         void drawEyes();
+        void setMaterialLight();
 };

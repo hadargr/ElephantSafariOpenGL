@@ -5,13 +5,13 @@
 
 class Grass {
     public:
-        Grass(GLfloat xMin, GLfloat xMax, GLfloat zMin, GLfloat zMax);
+        Grass(GLfloat x, GLfloat y, GLfloat z);
         void draw();
-        void move(GLfloat xMove, GLfloat zMove);
-        GLfloat xMin; // grass surface left x coordinate
-        GLfloat xMax; // grass surface right x coordinate
-        GLfloat zMin; // grass surface top y coordinate
-        GLfloat zMax; // grass surface bottom y coordinate
+        GLfloat x; // grass surface center x coordinate
+        GLfloat y; // grass surface center y coordinate
+        GLfloat z; // grass surface center z coordinate
     private:
         unsigned int texture; // the allocated texture id
+        GLUquadric* texQuad;
+        void setMaterialLight();
 };
