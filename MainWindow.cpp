@@ -11,6 +11,13 @@ MainWindow::MainWindow(int windowId) {
   metalObj = new MetalObject(10.0, 3.0, 2.0);
   sky = new Sky();
   chosenAction = WALK;
+  double posX = -30.0;
+  double posZ = -30.0;
+  for (int i=0; i< NUM_TREES; i++) {
+    trees[i] = new Tree(posX,5.0,posZ);
+    posX += 10;
+    posZ += (i%2) ? 5 : -5;
+  }
 }
 
 void MainWindow::redisplay() {
@@ -119,4 +126,7 @@ void MainWindow::draw() {
   elephant->draw();
   metalObj->draw();
   sky->draw();
+  for(int i=0; i< NUM_TREES; i++) {
+    trees[i]->draw();
+  }
 }

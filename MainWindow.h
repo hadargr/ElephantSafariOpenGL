@@ -7,6 +7,7 @@
 #include "Light.h"
 #include "MetalObject.h"
 #include "Sky.h"
+#include "Tree.h"
 #include "constants.h"
 
 class MainWindow {
@@ -29,6 +30,7 @@ class MainWindow {
         MetalObject* metalObj;
         Sky* sky;
         Action chosenAction;
+        Tree* trees[NUM_TREES];
         bool elephantViewOn = false;
     private:
         void moveCamera();

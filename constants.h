@@ -37,3 +37,4 @@ enum Action {
 #define CAMERA_INITIAL_POS_Z 30.0
 #define Z_NEAR 2.0
 #define Z_FAR 500.0
+#define NUM_TREES 5
