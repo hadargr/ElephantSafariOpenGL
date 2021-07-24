@@ -19,16 +19,24 @@ class MainWindow {
         void destroy();
         void keyboardPressed(unsigned char key);
         void resetView();
+        void changeCameraDeltaX(bool increase);
+        void changeCameraDeltaY(bool increase);
+        void changeCameraDeltaZ(bool increase);
+        void toggleElephantView();
         Grass* grass;
         Elephant* elephant;
         Light* light0;
         MetalObject* metalObj;
         Sky* sky;
         Action chosenAction;
+        bool elephantViewOn = false;
     private:
         void moveCamera();
         int windowId;
         int controlPanelId;
         GLfloat cameraXPos = CAMERA_INITIAL_POS_X;
         GLfloat cameraZPos = CAMERA_INITIAL_POS_Z;
+        GLfloat cameraDeltaX = 0;
+        GLfloat cameraDeltaY = 0;
+        GLfloat cameraDeltaZ = 0;
 };

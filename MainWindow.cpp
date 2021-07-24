@@ -70,6 +70,18 @@ void MainWindow::moveCamera() {
   cameraZPos = elephant->z + CAMERA_DISTANCE_FROM_ELEPHANT;
 }
 
+void MainWindow::changeCameraDeltaX(bool increase) {
+  cameraDeltaX = increase ? cameraDeltaX + 1 : cameraDeltaX - 1;
+}
+
+void MainWindow::changeCameraDeltaY(bool increase) {
+  cameraDeltaY = increase ? cameraDeltaY + 1 : cameraDeltaY - 1;
+}
+
+void MainWindow::changeCameraDeltaZ(bool increase) {
+  cameraDeltaZ = increase ? cameraDeltaZ + 1 : cameraDeltaZ - 1;
+}
+
 void MainWindow::resetView() {
   cameraXPos = CAMERA_INITIAL_POS_X;
   cameraZPos = CAMERA_INITIAL_POS_Z;
@@ -78,8 +90,30 @@ void MainWindow::resetView() {
   elephant->angle = 0.0;
 }
 
+void MainWindow::toggleElephantView() {
+  elephantViewOn = !elephantViewOn;
+}
+
 void MainWindow::draw() {
-  gluLookAt(cameraXPos, CAMERA_INITIAL_POS_Y, cameraZPos,elephant->x,0,elephant->z,0,1,0);
+  if (elephantViewOn) {
+    gluLookAt(elephant->x,
+      ELEPHANT_HEIGHT,
+      elephant->z,
+      elephant->x + (sin(degToRad(elephant->angle))*3) + (sin(degToRad(elephant->head_angle_horizontal))*3),
+      ELEPHANT_HEIGHT - (sin(degToRad(elephant->head_angle_vertical))*3),
+      elephant->z + (cos(degToRad(elephant->angle))*3),
+      0,1,0
+    );
+  } else {
+    gluLookAt(cameraXPos + cameraDeltaX,
+      CAMERA_INITIAL_POS_Y + cameraDeltaY,
+      cameraZPos + cameraDeltaZ,
+      elephant->x,
+      0,
+      elephant->z,
+      0,1,0
+    );
+  }
   light0->draw();
   grass->draw();
   elephant->draw();
