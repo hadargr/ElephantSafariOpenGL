@@ -6,6 +6,7 @@
 #define MAX_HEAD_ANGLE_VERTICAL 50
 #define MIN_HEAD_ANGLE_VERTICAL -25
 #define MAX_HEAD_ANGLE_HORIZONTAL 30
+#define MAX_TAIL_ANGLE_HORIZONTAL 45
 
 Elephant::Elephant(GLfloat x, GLfloat z) {
     this->x = x;
@@ -13,6 +14,8 @@ Elephant::Elephant(GLfloat x, GLfloat z) {
     this->angle = 0;
     this->head_angle_vertical = 0;
     this->head_angle_horizontal = 0;
+    this->tail_angle_vertical = 0;
+    this->tail_angle_horizontal = 0;
     this->tail_angle = 0;
     this->texture = generateTexture("./textures/elephant.jpeg", GL_TEXTURE_2D);
     this->texQuad = gluNewQuadric();
@@ -55,6 +58,34 @@ switch (key)
     case GLUT_KEY_LEFT:
         if(head_angle_horizontal < MAX_HEAD_ANGLE_HORIZONTAL) {
             head_angle_horizontal += ANGLE_DELTA;
+        }
+      break;
+    default:
+      break;
+  }
+}
+
+void Elephant::moveTail(unsigned char key) {
+switch (key)
+  {
+    case GLUT_KEY_DOWN:
+        if(tail_angle_vertical > MIN_HEAD_ANGLE_VERTICAL) {
+            tail_angle_vertical -= ANGLE_DELTA;
+        }
+      break;
+    case GLUT_KEY_UP:
+        if(tail_angle_vertical < MAX_HEAD_ANGLE_VERTICAL) {
+            tail_angle_vertical += ANGLE_DELTA;
+        }
+      break;
+    case GLUT_KEY_LEFT:
+        if(tail_angle_horizontal > -MAX_TAIL_ANGLE_HORIZONTAL) {
+            tail_angle_horizontal -= ANGLE_DELTA;
+        }
+      break;
+    case GLUT_KEY_RIGHT:
+        if(tail_angle_horizontal < MAX_TAIL_ANGLE_HORIZONTAL) {
+            tail_angle_horizontal += ANGLE_DELTA;
         }
       break;
     default:
@@ -179,8 +210,10 @@ void Elephant::drawLegs() {
 
 void Elephant::drawTail() {
     glPushMatrix();
-    glTranslatef(0.0, -2.3, -8.3);
-    glRotatef(-45,1,0,0);
+    glTranslatef(0.0, -1.1, -7.0);
+    glRotatef(tail_angle_horizontal, 0, 1, 0);
+    glRotatef(120,1,0,0);
+    glRotatef(tail_angle_vertical, 1, 0, 0);
     gluCylinder(texQuad,0.1,0.1,1.9,20,20);
     glPopMatrix();
 }

@@ -37,6 +37,8 @@ void MainWindow::keyboardPressed(unsigned char key) {
         elephant->turn(key == GLUT_KEY_LEFT);
       } else if (chosenAction == MOVE_HEAD) {
         elephant->moveHead(key);
+      } else if (chosenAction == MOVE_TAIL) {
+        elephant->moveTail(key);
       }
       break;
     case GLUT_KEY_UP:
@@ -45,11 +47,15 @@ void MainWindow::keyboardPressed(unsigned char key) {
         moveCamera();
       } else if (chosenAction == MOVE_HEAD) {
         elephant->moveHead(key);
+      } else if (chosenAction == MOVE_TAIL) {
+        elephant->moveTail(key);
       }
       break;
     case GLUT_KEY_DOWN:
       if (chosenAction == MOVE_HEAD) {
         elephant->moveHead(key);
+      } else if (chosenAction == MOVE_TAIL) {
+        elephant->moveTail(key);
       }
       break;
     default:

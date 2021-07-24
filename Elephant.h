@@ -13,11 +13,14 @@ class Elephant {
         void turn(bool positiveDir);
         void walk();
         void moveHead(unsigned char key);
+        void moveTail(unsigned char key);
         GLfloat x; // the elephant x position
         GLfloat z; // the elephant z position
         GLfloat angle;
         GLfloat head_angle_vertical;
         GLfloat head_angle_horizontal;
+        GLfloat tail_angle_vertical;
+        GLfloat tail_angle_horizontal;
         GLfloat tail_angle;
     private:
         unsigned int texture; // the allocated texture id
