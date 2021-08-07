@@ -15,6 +15,7 @@ enum MenuChoise {
     DECREASE_CAMERA_Z,
     INCREASE_CAMERA_Z,
     ELEPHANT_VIEW,
+    HELP,
     QUIT
 };
 
@@ -27,8 +28,10 @@ enum Action {
     NONE
 };
 
-#define WINDOW_WIDTH 1000.0
-#define WINDOW_HEIGHT 1000.0
+#define WINDOW_WIDTH 1000
+#define WINDOW_HEIGHT 1000
+#define HELP_MENU_WIDTH 300
+#define HELP_MENU_HEIGHT 300
 #define CONTROL_PANEL_HEIGHT WINDOW_HEIGHT/4
 #define WINDOW_POS_X 500
 #define WINDOW_POS_Y 50
@@ -37,4 +40,4 @@ enum Action {
 #define CAMERA_INITIAL_POS_Z 30.0
 #define Z_NEAR 2.0
 #define Z_FAR 500.0
-#define NUM_TREES 5
+#define NUM_TREES 50

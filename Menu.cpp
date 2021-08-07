@@ -8,6 +8,9 @@ Menu::Menu(MainWindow* mainWind) {
 }
 
 void menuCallback(int value) {
+  if (mainWindow->helpMenu->isOpen) {
+    return;
+  }
   switch(value) {
     case (INCREASE_AMBIENT):
     case (DECREASE_AMBIENT):
@@ -42,6 +45,9 @@ void menuCallback(int value) {
       break;
     case (RESET_VIEW):
       mainWindow->resetView();
+      break;
+    case (HELP):
+      mainWindow->openHelpMenu();
       break;
     case (QUIT):
       mainWindow->destroy();
@@ -99,6 +105,7 @@ void Menu::createMenu() {
   glutAddSubMenu("Adjust Ambient Light", adjustAmbient);
   glutAddSubMenu("Adjust Camera position", cameraAdjusment);
   glutAddMenuEntry("Reset view", RESET_VIEW);
+  glutAddMenuEntry("Help", HELP);
   glutAddMenuEntry("Quit", QUIT);
   glutAttachMenu(GLUT_RIGHT_BUTTON);
 }

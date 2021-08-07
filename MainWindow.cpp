@@ -2,6 +2,7 @@
 #include "MainWindow.h"
 
 #define CAMERA_DISTANCE_FROM_ELEPHANT 30
+#define ESC_KEY 27
 
 MainWindow::MainWindow(int windowId) {
   this->windowId = windowId;
@@ -10,13 +11,17 @@ MainWindow::MainWindow(int windowId) {
   light0 = new Light(0.0, 30.0, 0.0, GL_LIGHT0);
   metalObj = new MetalObject(10.0, 3.0, 2.0);
   sky = new Sky();
+  helpMenu = new Help(0,0,0);
   chosenAction = WALK;
-  double posX = -30.0;
-  double posZ = -30.0;
+  double posX, posZ;
   for (int i=0; i< NUM_TREES; i++) {
+    posX = fRand(-Z_FAR, Z_FAR);
+    posZ = fRand(-Z_FAR, Z_FAR);
+    if(abs(posX) < 10 && abs(posZ) < 10) {
+      posX +=10;
+      posZ += 10;
+    }
     trees[i] = new Tree(posX,5.0,posZ);
-    posX += 10;
-    posZ += (i%2) ? 5 : -5;
   }
 }
 
@@ -33,7 +38,27 @@ void MainWindow::setControlPanelId(int controlPanelId) {
   this->controlPanelId = controlPanelId;
 }
 
+void MainWindow::popOrtho() {
+  glutSetWindow(windowId);
+  glEnable(GL_DEPTH_TEST);
+  glEnable(GL_TEXTURE_2D);
+  glEnable(GL_LIGHTING);
+  glMatrixMode(GL_PROJECTION);
+  glPopMatrix();
+  glMatrixMode(GL_MODELVIEW);
+  glPopMatrix();
+  orthoMode = false;
+}
+
 void MainWindow::keyboardPressed(unsigned char key) {
+  if (helpMenu->isOpen) {
+    if (key == ESC_KEY) {
+      helpMenu->isOpen = false;
+      popOrtho();
+    }
+    redisplay();
+    return;
+  }
 
   // Handle walking
   switch (key)
@@ -101,7 +126,34 @@ void MainWindow::toggleElephantView() {
   elephantViewOn = !elephantViewOn;
 }
 
+void MainWindow::openHelpMenu() {
+  helpMenu->isOpen = true;
+}
+
+void MainWindow::pushOrtho() {
+  orthoMode = true;
+  glDisable(GL_TEXTURE_2D);
+  glDisable(GL_LIGHTING);
+  glClearColor(1,1,1,1);
+  glMatrixMode(GL_PROJECTION);
+  glPushMatrix();
+  glLoadIdentity();
+  gluOrtho2D(0, HELP_MENU_WIDTH, HELP_MENU_HEIGHT, 0);
+  glMatrixMode(GL_MODELVIEW);
+  glPushMatrix();
+  glLoadIdentity();
+  glDisable(GL_DEPTH_TEST);
+}
+
 void MainWindow::draw() {
+  if(helpMenu->isOpen) {
+    if (!orthoMode) {
+      pushOrtho();
+    }
+    helpMenu->draw();
+
+    return;
+  }
   if (elephantViewOn) {
     gluLookAt(elephant->x,
       ELEPHANT_HEIGHT,

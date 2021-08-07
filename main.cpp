@@ -58,10 +58,12 @@ void initSubWindow(void) {
 
 void display(void) {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glShadeModel(GL_SMOOTH);
-	glEnable(GL_NORMALIZE);
-	glEnable(GL_LIGHTING);
-  glLoadIdentity();
+  if (!mainWind->helpMenu->isOpen) {
+    glShadeModel(GL_SMOOTH);
+    glEnable(GL_NORMALIZE);
+    glEnable(GL_LIGHTING);
+    glLoadIdentity();
+  }
   mainWind->draw();
   glFlush();
 }

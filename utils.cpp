@@ -25,3 +25,17 @@ unsigned int generateTexture(const char *filename, GLenum target) {
   stbi_image_free(data);
   return texture;
 }
+
+double fRand(double fMin, double fMax) {
+    double f = (double)rand() / RAND_MAX;
+    return fMin + f * (fMax - fMin);
+}
+
+void drawText(string text, double posX, double posY, double red, double green, double blue, void* font) {
+  glColor3f(red, green, blue);
+  glRasterPos2f(posX,posY);
+  for (int i=0; i < text.length(); i++) {
+    glutBitmapCharacter(font, text[i]);
+  }
+  glColor3f(0, 0, 0);
+}

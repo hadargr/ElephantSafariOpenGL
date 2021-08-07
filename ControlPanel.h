@@ -12,7 +12,6 @@ class ControlPanel {
         void mouseClicked(int x, int y);
         string data; // TODO - REMOVE
     private:
-        void drawText(string text, int scale, double posX, double posY, double red, double green, double blue);
         void drawAmbientLightSection(GLfloat x);
         void drawElephantDataSection(GLfloat x);
         void drawControlSection(GLfloat x);

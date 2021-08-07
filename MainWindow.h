@@ -8,7 +8,7 @@
 #include "MetalObject.h"
 #include "Sky.h"
 #include "Tree.h"
-#include "constants.h"
+#include "Help.h"
 
 class MainWindow {
     public:
@@ -24,6 +24,7 @@ class MainWindow {
         void changeCameraDeltaY(bool increase);
         void changeCameraDeltaZ(bool increase);
         void toggleElephantView();
+        void openHelpMenu();
         Grass* grass;
         Elephant* elephant;
         Light* light0;
@@ -31,9 +32,13 @@ class MainWindow {
         Sky* sky;
         Action chosenAction;
         Tree* trees[NUM_TREES];
+        Help* helpMenu;
         bool elephantViewOn = false;
+        bool orthoMode = false;
     private:
         void moveCamera();
+        void popOrtho();
+        void pushOrtho();
         int windowId;
         int controlPanelId;
         GLfloat cameraXPos = CAMERA_INITIAL_POS_X;
