@@ -9,7 +9,7 @@ MainWindow::MainWindow(int windowId) {
   grass = new Grass(0.0, 0.0, 0.0);
   elephant = new Elephant(0.0, 0.0);
   light0 = new Light(0.0, 30.0, 0.0, GL_LIGHT0);
-  metalObj = new MetalObject(10.0, 3.0, 2.0);
+  metalObj = new MetalObject(10.0, 3.0, 0.0);
   sky = new Sky();
   helpMenu = new Help(0,0,0);
   chosenAction = WALK;
@@ -117,6 +117,7 @@ void MainWindow::changeCameraDeltaZ(bool increase) {
 void MainWindow::resetView() {
   cameraXPos = CAMERA_INITIAL_POS_X;
   cameraZPos = CAMERA_INITIAL_POS_Z;
+  cameraDeltaY = 0;
   elephant->x = 0.0;
   elephant->z = 0.0;
   elephant->angle = 0.0;
