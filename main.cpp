@@ -14,23 +14,6 @@
 
 using namespace std;
 
-/*void exitButton(void) {
-    // Get window pixels size
-    GLint curWidth = glutGet(GLUT_WINDOW_WIDTH);
-    GLint curHeight = glutGet(GLUT_WINDOW_HEIGHT);
-
-    glColor3f(0.3, 0, 0.3);
-    glRectf(((curWidth - EXIT_BUTTON_WIDTH)/curWidth)*WINDOW_WIDTH, EXIT_BUTTON_HEIGHT, 
-              WINDOW_WIDTH, 0.0);
-
-    glColor3f (1.0, 1.0, 1.0);
-    string message = "EXIT";
-    glRasterPos2f(((curWidth - EXIT_BUTTON_WIDTH)/curWidth)*WINDOW_WIDTH + 5.0, 5.0);
-    for(char& c : message) {
-        glutBitmapCharacter (GLUT_BITMAP_TIMES_ROMAN_24, c);
-    }
-}*/
-
 ControlPanel* cPanel;
 MainWindow* mainWind;;
 Menu* mainMenu;
@@ -77,12 +60,10 @@ void displaySubWin(void) {
 
 void timer(int) {
   mainWind->redisplay();
- // glutTimerFunc(1000/60, timer,0);
 }
 
 void mouseActions(int button, int state, int x, int y) {
-    if (button == GLUT_LEFT_BUTTON && state == GLUT_UP
-        /*x >= curWidth-EXIT_BUTTON_WIDTH && y >= curHeight-EXIT_BUTTON_HEIGHT*/) {
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
         cPanel->mouseClicked(x,y);
     }
   glutPostWindowRedisplay(subWindow);
@@ -102,7 +83,7 @@ void onSpecialKeboardPressed (int key, int xmouse, int ymouse) {
 
 int main(GLint argc, char** argv) {
   glutInit(&argc, argv);
-  glutInitDisplayMode(GLUT_RGBA /*| GLUT_DOUBLE*/ | GLUT_DEPTH);
+  glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH);
 
   glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
   glutInitWindowPosition (WINDOW_POS_X, WINDOW_POS_Y);

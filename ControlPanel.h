@@ -10,13 +10,11 @@ class ControlPanel {
         void draw();
         void redisplay();
         void mouseClicked(int x, int y);
-        string data; // TODO - REMOVE
     private:
         void drawAmbientLightSection(GLfloat x);
         void drawElephantDataSection(GLfloat x);
         void drawControlSection(GLfloat x);
         void drawButton(GLfloat x, GLfloat y, bool isSelected, string text);
-        void drawData(); // TODO - REMOVE
         int windowId;
         MainWindow* mainWindow;
 };

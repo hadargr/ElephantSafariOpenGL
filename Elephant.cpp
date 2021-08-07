@@ -94,7 +94,6 @@ switch (key)
 }
 
 void Elephant::draw() {
-    //glColor3f(0.6, 0.6, 0.6);
     glEnable(GL_TEXTURE_2D);
     glPushMatrix();
     

@@ -55,7 +55,6 @@ void ControlPanel::drawControlSection(GLfloat x) {
 }
 
 void ControlPanel::mouseClicked(int x, int y) {
-  data = "x:" + to_string(x) + ", y:" + to_string(y) + ", walk: " + to_string(CONTROL_SECTION_X) + ", " + to_string(WALK_BUTTON_Y); 
   if (x >= CONTROL_SECTION_X && x <= CONTROL_SECTION_X + BUTTON_WIDTH) {
     if (y > TEXT_HEIGHT && y<= WALK_BUTTON_Y) {
       mainWindow->chosenAction = mainWindow->chosenAction == WALK ? NONE : WALK;
