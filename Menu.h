@@ -10,5 +10,4 @@ class Menu {
     private:
         void createMenu();
         int menuId;
-        int currentValue;
 };

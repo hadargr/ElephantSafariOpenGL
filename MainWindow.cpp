@@ -8,10 +8,10 @@ MainWindow::MainWindow(int windowId) {
   this->windowId = windowId;
   grass = new Grass(0.0, 0.0, 0.0);
   elephant = new Elephant(0.0, 0.0);
-  light0 = new Light(0.0, 30.0, 0.0, GL_LIGHT0);
+  ambientLight = new Light(0.0, 30.0, 0.0, GL_LIGHT0);
   metalObj = new MetalObject(10.0, 3.0, 0.0);
   sky = new Sky();
-  helpMenu = new Help(0,0,0);
+  helpMenu = new Help();
   chosenAction = WALK;
   double posX, posZ;
   for (int i=0; i< NUM_TREES; i++) {
@@ -76,7 +76,7 @@ void MainWindow::keyboardPressed(unsigned char key) {
     case GLUT_KEY_UP:
       if (chosenAction == WALK) {
         elephant->walk();
-        moveCamera();
+        moveCamerAfterElephant();
       } else if (chosenAction == MOVE_HEAD) {
         elephant->moveHead(key);
       } else if (chosenAction == MOVE_TAIL) {
@@ -97,7 +97,7 @@ void MainWindow::keyboardPressed(unsigned char key) {
   redisplay();
 }
 
-void MainWindow::moveCamera() {
+void MainWindow::moveCamerAfterElephant() {
   cameraXPos = elephant->x;
   cameraZPos = elephant->z + CAMERA_DISTANCE_FROM_ELEPHANT;
 }
@@ -174,7 +174,7 @@ void MainWindow::draw() {
       0,1,0
     );
   }
-  light0->draw();
+  ambientLight->draw();
   grass->draw();
   elephant->draw();
   metalObj->draw();

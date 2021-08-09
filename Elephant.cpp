@@ -16,7 +16,6 @@ Elephant::Elephant(GLfloat x, GLfloat z) {
     this->head_angle_horizontal = 0;
     this->tail_angle_vertical = 0;
     this->tail_angle_horizontal = 0;
-    this->tail_angle = 0;
     this->texture = generateTexture("./textures/elephant.jpeg", GL_TEXTURE_2D);
     this->texQuad = gluNewQuadric();
 }

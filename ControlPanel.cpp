@@ -23,7 +23,7 @@ void ControlPanel::redisplay() {
 
 void ControlPanel::drawAmbientLightSection(GLfloat x) {
   GLfloat initialY = CONTROL_PANEL_HEIGHT - TEXT_HEIGHT;
-  Light* ambientLight = mainWindow->light0;
+  Light* ambientLight = mainWindow->ambientLight;
   string text = "Current Ambient light";
   drawText(text, x, initialY, 0,0,0);
   GLfloat* ambient = ambientLight->getAmbient();

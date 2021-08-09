@@ -27,7 +27,7 @@ class MainWindow {
         void openHelpMenu();
         Grass* grass;
         Elephant* elephant;
-        Light* light0;
+        Light* ambientLight;
         MetalObject* metalObj;
         Sky* sky;
         Action chosenAction;
@@ -36,7 +36,7 @@ class MainWindow {
         bool elephantViewOn = false;
         bool orthoMode = false;
     private:
-        void moveCamera();
+        void moveCamerAfterElephant();
         void popOrtho();
         void pushOrtho();
         int windowId;

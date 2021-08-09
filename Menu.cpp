@@ -14,19 +14,19 @@ void menuCallback(int value) {
   switch(value) {
     case (INCREASE_AMBIENT):
     case (DECREASE_AMBIENT):
-      mainWindow->light0->setAmbient(value == INCREASE_AMBIENT);
+      mainWindow->ambientLight->setAmbient(value == INCREASE_AMBIENT);
       break;
     case (INCREASE_AMBIENT_RED):
     case (DECREASE_AMBIENT_RED):
-      mainWindow->light0->setAmbientRed(value == INCREASE_AMBIENT_RED);
+      mainWindow->ambientLight->setAmbientRed(value == INCREASE_AMBIENT_RED);
       break;
     case (INCREASE_AMBIENT_GREEN):
     case (DECREASE_AMBIENT_GREEN):
-      mainWindow->light0->setAmbientGreen(value == INCREASE_AMBIENT_GREEN);
+      mainWindow->ambientLight->setAmbientGreen(value == INCREASE_AMBIENT_GREEN);
       break;
     case (INCREASE_AMBIENT_BLUE):
     case (DECREASE_AMBIENT_BLUE):
-      mainWindow->light0->setAmbientBlue(value == INCREASE_AMBIENT_BLUE);
+      mainWindow->ambientLight->setAmbientBlue(value == INCREASE_AMBIENT_BLUE);
       break;
     case (INCREASE_CAMERA_X):
     case (DECREASE_CAMERA_X):

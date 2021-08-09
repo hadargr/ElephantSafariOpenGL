@@ -6,10 +6,7 @@
 
 class Help {
     public:
-        Help(GLfloat x, GLfloat y, GLfloat z);
+        Help();
         void draw();
         bool isOpen;
-        GLfloat x;
-        GLfloat y;
-        GLfloat z;
 };

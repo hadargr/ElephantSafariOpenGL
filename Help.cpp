@@ -7,11 +7,8 @@
 #define TAB 5
 #define DOT_DEV 2
 
-Help::Help(GLfloat x, GLfloat y, GLfloat z) {
+Help::Help() {
   isOpen = false;
-  this-> x = x;
-  this->y = y;
-  this->z = z;
 }
 
 void drawDot(double posX, double posY) {
